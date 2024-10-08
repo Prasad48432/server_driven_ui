@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import withPWA from 'next-pwa';
+import withPWA from "next-pwa";
 
 const nextConfig = {
   publicRuntimeConfig: {
@@ -9,21 +9,26 @@ const nextConfig = {
     CONTENTSTACK_ENVIRONMENT: process.env.CONTENTSTACK_ENVIRONMENT,
     CONTENTSTACK_MANAGEMENT_TOKEN: process.env.CONTENTSTACK_MANAGEMENT_TOKEN,
     CONTENTSTACK_API_HOST:
-      process.env.CONTENTSTACK_API_HOST || 'api.contentstack.io',
+      process.env.CONTENTSTACK_API_HOST || "api.contentstack.io",
     CONTENTSTACK_APP_HOST:
-      process.env.CONTENTSTACK_APP_HOST || 'app.contentstack.com',
+      process.env.CONTENTSTACK_APP_HOST || "app.contentstack.com",
     NEXT_PUBLIC_CONTENTSTACK_API_KEY: process.env.CONTENTSTACK_API_KEY,
     CONTENTSTACK_LIVE_PREVIEW:
-      process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW || 'true',
+      process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW || "true",
     CONTENTSTACK_LIVE_EDIT_TAGS:
-      process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_EDIT_TAGS || 'false',
+      process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_EDIT_TAGS || "false",
+  },
+  images: {
+    domains: ["eu-images.contentstack.com"], // Allow the external image domain
   },
 };
 
 // PWA configuration
 const pwaConfig = withPWA({
-  dest: 'public',
+  dest: "public",
 });
 
 // Exporting the configuration
-export default process.env.NODE_ENV === 'development' ? nextConfig : pwaConfig(nextConfig);
+export default process.env.NODE_ENV === "development"
+  ? nextConfig
+  : pwaConfig(nextConfig);

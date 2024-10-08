@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Navbar, Footer} from '.';
-
+import React, { useState, useEffect } from "react";
+import { Navbar, Footer, HeaderMobile } from ".";
 
 export default function Layout({
   header,
@@ -11,14 +10,13 @@ export default function Layout({
   entries,
   children,
 }) {
-
   const [getLayout, setLayout] = useState({ header, footer });
   const jsonObj = { header, footer };
   page && (jsonObj.page = page);
   blogPost && (jsonObj.blog_post = blogPost);
   blogList && (jsonObj.blog_post = blogList);
 
-  function buildNavigation(ent,hd,ft) {
+  function buildNavigation(ent, hd, ft) {
     let newHeader = { ...hd };
     let newFooter = { ...ft };
     if (ent.length !== newHeader.navigation_menu.length) {
@@ -59,13 +57,16 @@ export default function Layout({
 
   return (
     <>
-      {header ? <Navbar header={getLayout.header} entries={entries} /> : ''}
+      {header ? <Navbar header={getLayout.header} entries={entries} /> : ""}
+      {header ? (
+        <HeaderMobile header={getLayout.header} entries={entries} />
+      ) : (
+        ""
+      )}
       <main className={`mainClass`}>
-        <>
-        {children}
-        </>
+        <>{children}</>
       </main>
-      {footer ? <Footer footer={getLayout.footer} entries={entries} /> : ''}
+      {footer ? <Footer footer={getLayout.footer} entries={entries} /> : ""}
     </>
   );
 }

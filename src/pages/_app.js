@@ -43,7 +43,7 @@ function MyApp(props) {
       <Head>
         <meta
           name="application-name"
-          content="Contentstack-Nextjs-Starter-App"
+          content="Spotlight Page"
         />
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -52,7 +52,7 @@ function MyApp(props) {
           content="width=device-width,initial-scale=1,minimum-scale=1"
         />
         <meta name="theme-color" content="#317EFB" />
-        <title>Contentstack-Nextjs-Starter-App</title>
+        <title>Spotlight Page</title>
         {page?.seo && page.seo.enable_search_indexing && metaData(page.seo)}
       </Head>
       <div className={`${montserrat.variable} montserrat`}>

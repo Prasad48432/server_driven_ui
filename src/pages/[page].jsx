@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { onEntryChange } from "@/contentstack-sdk";
-import { Navbar, Content, RenderComponents } from "@/components";
+import { RenderComponents } from "@/components";
 import { getPageRes } from "@/helper";
 
-export default function Home(props) {
+export default function Page(props) {
   const { page, entryUrl } = props;
   const [getEntry, setEntry] = useState(page);
 
@@ -19,8 +19,9 @@ export default function Home(props) {
 
   useEffect(() => {
     onEntryChange(() => fetchData());
-  }, []);
-  return getEntry ? (
+  }, [page]);
+
+  return getEntry.page_components ? (
     <div className={`flex flex-col items-center justify-center`}>
       <RenderComponents
         pageComponents={getEntry.page_components}
@@ -30,16 +31,20 @@ export default function Home(props) {
       />
     </div>
   ) : (
-    <>Loading...</>
+    <p className="text-primarytext text-lg">Loading..</p>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ params }) {
   try {
-    const entryRes = await getPageRes(context.resolvedUrl);
+    const entryUrl = params.page.includes("/")
+      ? params.page
+      : `/${params.page}`;
+    const entryRes = await getPageRes(entryUrl);
+    if (!entryRes) throw new Error("404");
     return {
       props: {
-        entryUrl: context.resolvedUrl || null,
+        entryUrl: entryUrl || null,
         page: entryRes || null,
       },
     };

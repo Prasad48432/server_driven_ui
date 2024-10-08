@@ -78,11 +78,8 @@ const Navbar = ({ header, entries }) => {
             </Link>
           )}
         </span>
-        <span className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-primarytext rounded-lg md:hidden">
-          <RxHamburgerMenu size={26} />
-        </span>
         <div className="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-          <ul className="flex flex-col font-medium mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row ">
+          <ul className="flex font-medium rounded-lg md:space-x-8 md:flex-row items-center justify-center">
             {headerData &&
               headerData.navigation_menu.map((list) => {
                 const className =
@@ -90,12 +87,16 @@ const Navbar = ({ header, entries }) => {
                 return (
                   <li
                     key={list.label}
-                    className="group py-2 px-3 md:p-0 text-primarytext hover:text-primarytext/80 transition-all  duration-300 ease-in-out"
+                    className="group py-2 px-3 md:p-0  transition-all  duration-300 ease-in-out"
                     {...list.page_reference[0].$?.url}
                   >
                     <Link
                       href={list.page_reference[0].url}
-                      className="bg-left-bottom bg-gradient-to-r from-gray-300 to-gray-300 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out"
+                      className={`bg-left-bottom ${
+                        className === "active"
+                          ? "underline text-[#fcff4d]"
+                          : "text-primarytext hover:text-primarytext/80 bg-gradient-to-r from-gray-300 to-gray-300 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]"
+                      }  transition-all duration-300 ease-out`}
                     >
                       {list.label}
                     </Link>
