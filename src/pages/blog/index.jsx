@@ -20,17 +20,6 @@ export default function Blog({ page, posts, archivePost, pageUrl }) {
   }, []);
   return (
     <>
-      {getBanner.page_components ? (
-        <RenderComponents
-          pageComponents={getBanner.page_components}
-          blogPost
-          contentTypeUid="page"
-          entryUid={getBanner.uid}
-          locale={getBanner.locale}
-        />
-      ) : (
-        <p className="text-primarytext text-lg">Loading..</p>
-      )}
       <div className="mt-28 mx-auto flex flex-col">
         <div className="flex mb-12 mx-auto flex-col items-center justify-center gap-2 max-w-[80%] lg:max-w-[60%]">
           <h2 className="text-center text-2xl lg:text-4xl text-primarytext font-semibold">

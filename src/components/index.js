@@ -14,6 +14,7 @@ import BlogList from "./bloglist";
 import ArchiveRelative from "./archiverelative";
 import HeaderMobile from "./mobileheader";
 import BlogBanner from "./blogbanner";
+import HomePage from "./home_page";
 
 export {
     Navbar,
@@ -31,5 +32,6 @@ export {
     BlogList,
     ArchiveRelative,
     HeaderMobile,
-    BlogBanner
+    BlogBanner,
+    HomePage
 }

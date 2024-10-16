@@ -12,8 +12,6 @@ const liveEdit = envConfig.CONTENTSTACK_LIVE_EDIT_TAGS === 'true';
 export const getHeaderRes = async () => {
   const response = await Stack.getEntry({
     contentTypeUid: 'header',
-    referenceFieldPath: ['navigation_menu.page_reference'],
-    jsonRtePath: ['notification_bar.announcement_text'],
   });
 
   liveEdit && addEditableTags(response[0][0], 'header', true);
@@ -41,16 +39,20 @@ export const getAllEntries = async () => {
   return response[0];
 };
 
-export const getPageRes = async (entryUrl) => {
-  const response = await Stack.getEntryByUrl({
-    contentTypeUid: 'page',
+export const getHomePageEntries = async (entryUrl) => {
+  const response = await Stack.getEntry({
+    contentTypeUid: 'home_page',
     entryUrl,
-    referenceFieldPath: ['page_components.from_blog.featured_blogs'],
-    jsonRtePath: [
-      'page_components.from_blog.featured_blogs.body',
-      'page_components.section_with_buckets.buckets.description',
-      'page_components.section_with_html_code.description',
-    ],
+
+  });
+  return response[0];
+};
+
+
+export const getPageRes = async (entryUrl, contentTypeUid) => {
+  const response = await Stack.getEntryByUrl({
+    contentTypeUid: contentTypeUid,
+    entryUrl,
   });
   liveEdit && addEditableTags(response[0], 'page', true);
   return response[0];

@@ -8,7 +8,7 @@ function BlogList({ bloglist, index }) {
   const stringLength = body.lastIndexOf(' ');
   body = `${body.substr(0, Math.min(body.length, stringLength))}...`;
   return (
-    <div key={index} className='w-[90vw] lg:w-full col-span-1 border border-gray-700 p-4 rounded-lg bg- flex flex-col items-center justify-center gap-3 text-primarytext'>
+    <div key={index} className='w-[90vw] lg:w-full col-span-1 border border-dashed border-gray-700 p-4 rounded-lg bg- flex flex-col items-center justify-center gap-3 text-primarytext'>
       {bloglist.featured_image && (
         <Link href={bloglist.url}>
             <img

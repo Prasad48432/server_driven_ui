@@ -7,6 +7,7 @@ export default function Page(props) {
   const { page, entryUrl } = props;
   const [getEntry, setEntry] = useState(page);
 
+
   async function fetchData() {
     try {
       const entryRes = await getPageRes(entryUrl);

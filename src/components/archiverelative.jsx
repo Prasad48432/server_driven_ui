@@ -7,7 +7,7 @@ export default function ArchiveRelative({ blogs }) {
     <>
       {blogs?.map((blog, idx) => (
         <Link href={blog.url} key={idx}>
-          <div className="w-[90vw] min-h-48 lg:w-full col-span-1 gap-3 rounded-lg flex flex-col items-center justify-center border border-red-700 p-4 text-primarytext">
+          <div className="w-[90vw] min-h-48 lg:w-full col-span-1 gap-3 rounded-lg flex flex-col items-center justify-center border border-dashed border-gray-700 p-4 text-primarytext">
             <h4 className="text-lg font-semibold" {...blog.$?.title}>{blog.title}</h4>
             {typeof blog.body === "string" && (
               <div className="text-primarytext/80" {...blog.$?.body}>{parse(blog.body.slice(0, 80))}</div>

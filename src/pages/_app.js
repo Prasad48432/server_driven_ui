@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Layout } from "@/components";
 import Head from "next/head";
-import { getHeaderRes, getFooterRes, getAllEntries } from "@/helper";
+import { getHeaderRes, getFooterRes, getAllEntries, getHomePageEntries } from "@/helper";
 import App from "next/app";
 import {Montserrat} from "next/font/google";
 

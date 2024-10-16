@@ -7,7 +7,6 @@ import { RenderComponents, ArchiveRelative } from "@/components";
 
 export default function BlogPost({ blogPost, page, pageUrl }) {
   const [getPost, setPost] = useState({ banner: page, post: blogPost });
-  console.log("post is", getPost);
   async function fetchData() {
     try {
       const entryRes = await getBlogPostRes(pageUrl);
@@ -28,7 +27,7 @@ export default function BlogPost({ blogPost, page, pageUrl }) {
     <div className="mt-32">
       <div className="max-w-7xl flex flex-col lg:flex-row gap-8 mx-auto items-start justify-center">
         <div className="w-[90vw] lg:w-[70%] flex flex-col mx-auto items-start justify-center">
-          <img src={post?.featured_image.url} className="rounded-lg mb-3" />
+          <img src={post?.featured_image.url} className="rounded-lg mb-3 opacity-80" />
           <article>
             {post && post.title ? (
               <h2
@@ -58,7 +57,7 @@ export default function BlogPost({ blogPost, page, pageUrl }) {
               </p>
             )}
             {post && post.body ? (
-              <div className="text-primarytext/90" {...post.$?.body}>{parse(post.body)}</div>
+              <div className="text-primarytext/90 parser" {...post.$?.body}>{parse(post.body)}</div>
             ) : (
               <p className="text-primarytext text-lg">Loading..</p>
             )}
@@ -74,28 +73,6 @@ export default function BlogPost({ blogPost, page, pageUrl }) {
           />
           </div>
         </div>
-
-        {/* <div className="blog-column-right">
-          <div className="related-post">
-            {banner && banner?.page_components[2].widget ? (
-              <h2 {...banner?.page_components[2].widget.$?.title_h2}>
-                {banner?.page_components[2].widget.title_h2}
-              </h2>
-            ) : (
-              <h2>
-                <p className="text-primarytext text-lg">Loading..</p>
-              </h2>
-            )}
-            {post && post.related_post ? (
-              <ArchiveRelative
-                {...post.$?.related_post}
-                blogs={post.related_post}
-              />
-            ) : (
-              <p className="text-primarytext text-lg">Loading..</p>
-            )}
-          </div>
-        </div> */}
       </div>
     </div>
   );

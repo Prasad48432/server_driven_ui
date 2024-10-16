@@ -24,7 +24,7 @@ const Services = ({ services }) => {
       >
         {services.buckets?.map((bucket, index) => (
           <div
-            className="w-[90vw] lg:w-full flex border border-gray-700 flex-col items-center justify-center p-2 rounded-lg"
+            className="w-[90vw] lg:w-full flex border border-dashed border-gray-700 flex-col items-center justify-center p-2 rounded-lg"
             key={index}
           >
             {bucket.icon && (

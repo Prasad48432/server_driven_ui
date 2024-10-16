@@ -16,7 +16,7 @@ export default function ShowIdea({ section }) {
              items-center justify-center gap-8 px-4 py-8 mt-5`}
       >
         <div className="w-full lg:w-1/2 items-center justify-center flex">
-          <div className="border border-gray-600 lg:border-2 lg:border-gray-600 rounded-2xl p-0 lg:p-1 w-[90vw] h-auto md:w-[450px] md:h-[450px]">
+          <div className="border border-dashed border-gray-700 lg:border-2 lg:border-gray-700 rounded-2xl p-0 lg:p-1 w-[90vw] h-auto md:w-[450px] md:h-[450px]">
             <img
               {...section.image.$?.url}
               src={section.image.url}

@@ -56,3 +56,38 @@ body {
   --tw-border-opacity: 1;
   border-color: #0a0a0a;
 }
+
+
+.parser ul {
+  list-style-type: disc; /* You can also use 'circle' or 'square' */
+  padding-left: 20px;
+  margin-top: 1em;
+}
+.parser ol {
+  list-style-type: decimal; /* You can also use 'circle' or 'square' */
+  padding-left: 20px;
+  margin-top: 1em;
+}
+
+.parser h1 {
+  font-size: 2.5rem; /* Adjust heading size as needed */
+  margin-top: 1em;
+}
+
+.parser h2 {
+  font-size: 1.75rem; /* Adjust heading size as needed */
+  margin-top: 1em;
+}
+
+.parser li {
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+}
+
+.parser a{
+  color: #d1d33f;
+  text-decoration: underline;
+}
+.parser p{
+  font-size: 1.15rem;
+}

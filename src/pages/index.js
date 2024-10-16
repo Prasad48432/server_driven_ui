@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { onEntryChange } from "@/contentstack-sdk";
-import { Navbar, Content, RenderComponents } from "@/components";
+import { Navbar, Content, RenderComponents, HomePage } from "@/components";
 import { getPageRes } from "@/helper";
 
 export default function Home(props) {
@@ -9,7 +9,7 @@ export default function Home(props) {
 
   async function fetchData() {
     try {
-      const entryRes = await getPageRes(entryUrl);
+      const entryRes = await getPageRes(entryUrl, 'home_page');
       if (!entryRes) throw new Error("Status code 404");
       setEntry(entryRes);
     } catch (error) {
@@ -22,9 +22,9 @@ export default function Home(props) {
   }, []);
   return getEntry ? (
     <div className={`flex flex-col items-center justify-center`}>
-      <RenderComponents
-        pageComponents={getEntry.page_components}
-        contentTypeUid="page"
+      <HomePage
+        getEntry={getEntry}
+        contentTypeUid="home_page"
         entryUid={getEntry.uid}
         locale={getEntry.locale}
       />
@@ -36,7 +36,7 @@ export default function Home(props) {
 
 export async function getServerSideProps(context) {
   try {
-    const entryRes = await getPageRes(context.resolvedUrl);
+    const entryRes = await getPageRes(context.resolvedUrl,'home_page');
     return {
       props: {
         entryUrl: context.resolvedUrl || null,

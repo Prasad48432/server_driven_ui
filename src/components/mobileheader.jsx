@@ -20,9 +20,6 @@ const HeaderMobile = ({ header, entries }) => {
         if (!hFound) {
           newHeader.navigation_menu?.push({
             label: entry.title,
-            page_reference: [
-              { title: entry.title, url: entry.url, $: entry.$ },
-            ],
             $: {},
           });
         }
@@ -82,10 +79,10 @@ const HeaderMobile = ({ header, entries }) => {
               ) : (
                 <MenuItem>
                   <Link
-                    href={item.page_reference[0].url}
+                    href={item.url.href}
                     onClick={() => toggleOpen()}
                     className={`flex w-full  text-2xl ${
-                      item.page_reference[0].url === pathname
+                      item.url.href === pathname
                         ? "underline text-[#fcff4d]"
                         : "text-primarytext"
                     }`}
