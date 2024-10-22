@@ -3,7 +3,7 @@ import moment from "moment";
 import parse from "html-react-parser";
 import { getPageRes, getBlogPostRes } from "@/helper";
 import { onEntryChange } from "@/contentstack-sdk";
-import { RenderComponents, ArchiveRelative } from "@/components";
+import { ArchiveRelative } from "@/components";
 
 export default function BlogPost({ blogPost, page, pageUrl }) {
   const [getPost, setPost] = useState({ banner: page, post: blogPost });

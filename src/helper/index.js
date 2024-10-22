@@ -48,6 +48,14 @@ export const getHomePageEntries = async (entryUrl) => {
   return response[0];
 };
 
+export const getLayout = async (entryUrl) => {
+  const response = await Stack.getEntry({
+    contentTypeUid: 'visuals',
+
+  });
+  return response[0];
+};
+
 
 export const getPageRes = async (entryUrl, contentTypeUid) => {
   const response = await Stack.getEntryByUrl({

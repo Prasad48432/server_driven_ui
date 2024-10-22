@@ -45,7 +45,7 @@ export default function Footer({ footer, entries }) {
   const footerData = getFooter ? getFooter : undefined;
 
   return (
-    <footer className="bg-primarybg m-4">
+    <footer className="bg-transparent m-4">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           {footerData && footerData.logo ? (
@@ -100,76 +100,5 @@ export default function Footer({ footer, entries }) {
         )}
       </div>
     </footer>
-
-    // <footer>
-    //   <div className="max-width footer-div">
-    //     <div className="col-quarter">
-    // {footerData && footerData.logo ? (
-    //   <Link href="/" className="logo-tag">
-    //     <img
-    //       src={footerData.logo.url}
-    //       alt={footerData.title}
-    //       title={footerData.title}
-    //       {...(footer.logo.$?.url)}
-    //       className="logo footer-logo"
-    //     />
-    //   </Link>
-    // ) : (
-    //   <p className="text-primarytext">Loading</p>
-    // )}
-    //     </div>
-    //     <div className="col-half">
-    //       <nav>
-    //         <ul className="nav-ul">
-    // {footerData ? (
-    //   footerData.navigation.link.map((menu) => (
-    //     <li
-    //       className="footer-nav-li"
-    //       key={menu.title}
-    //       {...menu.$?.title}
-    //     >
-    //       <Link href={menu.href}>{menu.title}</Link>
-    //     </li>
-    //   ))
-    // ) : (
-    //   <Skeleton width={300} />
-    // )}
-    //         </ul>
-    //       </nav>
-    //     </div>
-    //     <div className="col-quarter social-link">
-    //       <div className="social-nav">
-    //         {footerData ? (
-    //           footerData.social?.social_share.map((social) => (
-    //             <a
-    //               href={social.link.href}
-    //               title={social.link.title}
-    //               key={social.link.title}
-    //             >
-    //               {social.icon && (
-    //                 <img
-    //                   src={social.icon.url}
-    //                   alt={social.link.title}
-    //                   {...(social.icon.$?.url)}
-    //                 />
-    //               )}
-    //             </a>
-    //           ))
-    //         ) : (
-    //             <p className="text-primarytext">Loading</p>
-    //         )}
-    //       </div>
-    //     </div>
-    //   </div>
-    // {footerData && typeof footerData.copyright === "string" ? (
-    //   <div className="copyright" {...(footer.$?.copyright)}>
-    //     {parse(footerData.copyright)}
-    //   </div>
-    // ) : (
-    //   <div className="copyright">
-    //     <p className="text-primarytext">Loading</p>
-    //   </div>
-    // )}
-    // </footer>
   );
 }

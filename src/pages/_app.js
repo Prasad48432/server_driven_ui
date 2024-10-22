@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
 import { Layout } from "@/components";
 import Head from "next/head";
-import { getHeaderRes, getFooterRes, getAllEntries, getHomePageEntries } from "@/helper";
+import { getHeaderRes, getFooterRes, getAllEntries, getLayout } from "@/helper";
 import App from "next/app";
-import {Montserrat} from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 function MyApp(props) {
-  const { Component, pageProps, header, footer, entries } = props;
+  const { Component, pageProps, header, footer, entries, layout } = props;
   const { page, posts, archivePost, blogPost } = pageProps;
 
   const metaData = (seo) => {
@@ -41,10 +41,7 @@ function MyApp(props) {
   return (
     <>
       <Head>
-        <meta
-          name="application-name"
-          content="Spotlight Page"
-        />
+        <meta name="application-name" content="Spotlight Page" />
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
@@ -56,26 +53,24 @@ function MyApp(props) {
         {page?.seo && page.seo.enable_search_indexing && metaData(page.seo)}
       </Head>
       <div className={`${montserrat.variable} montserrat`}>
-      <Layout
-        header={header}
-        footer={footer}
-        page={page}
-        blogPost={blogPost}
-        blogList={blogList}
-        entries={entries}
-      >
-        <Component {...pageProps} />
-      </Layout>
+        <Layout
+          header={header}
+          footer={footer}
+          page={page}
+          blogPost={blogPost}
+          blogList={blogList}
+          entries={entries}
+        >
+          <Component {...pageProps} />
+        </Layout>
       </div>
     </>
   );
 }
 
 MyApp.getInitialProps = async (appContext) => {
-  // Get default App props first
   const appProps = await App.getInitialProps(appContext);
 
-  // Fetch header, footer, and entries data
   const header = await getHeaderRes();
   const footer = await getFooterRes();
   const entries = await getAllEntries();

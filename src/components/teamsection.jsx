@@ -1,31 +1,28 @@
 import React from "react";
 import Image from "next/image";
 
-export default function TeamSection({ ourTeam }) {
+export default function TeamSection({ getEntry }) {
+  const employees = getEntry.components[0].our_team.employee;
+  const title = getEntry.components[0].our_team.team_title;
+  const description = getEntry.components[0].our_team.description;
   return (
-    <div className="max-w-7xl mt-28 flex flex-col items-center justify-center gap-12">
+    <div className="max-w-7xl flex flex-col items-center justify-center gap-12">
       <div className="flex flex-col items-center justify-center gap-4 max-w-[80%] lg:max-w-[60%]">
-        {ourTeam.title_h2 && (
-          <h2
-            className="text-center text-2xl lg:text-4xl text-primarytext font-semibold"
-            {...ourTeam.$?.title_h2}
-          >
-            {ourTeam.title_h2}
+        {title && (
+          <h2 className="text-center text-2xl lg:text-4xl text-primarytext font-semibold">
+            {title}
           </h2>
         )}
-        {ourTeam.description ? (
-          <p
-            className="text-center text-base lg:text-xl text-primarytext"
-            {...ourTeam.$?.description}
-          >
-            {ourTeam.description}
+        {description ? (
+          <p className="text-center text-base lg:text-xl text-primarytext">
+            {description}
           </p>
         ) : (
           ""
         )}
       </div>
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-center text-primarytext">
-        {ourTeam.employees?.map((employee, index) => (
+        {employees.map((employee, index) => (
           <div
             className="flex flex-col gap-3 items-center justify-center"
             key={index}
@@ -36,7 +33,7 @@ export default function TeamSection({ ourTeam }) {
                   alt={employee.image.filename}
                   src={employee.image.url}
                   {...employee.image.$?.url}
-                  fill 
+                  fill
                   className="rounded-lg object-cover"
                 />
               </div>

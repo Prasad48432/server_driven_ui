@@ -57,7 +57,7 @@ export default function Layout({
 
   return (
     <>
-      {header ? <Navbar header={getLayout.header} entries={entries} /> : ""}
+      {header ? <Navbar header={getLayout.header} entries={entries}/> : ""}
       {header ? (
         <HeaderMobile header={getLayout.header} entries={entries} />
       ) : (

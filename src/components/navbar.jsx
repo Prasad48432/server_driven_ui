@@ -3,12 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { onEntryChange } from "@/contentstack-sdk";
 import { getHeaderRes } from "@/helper";
-import parse from "html-react-parser";
-import Marquee from "react-fast-marquee";
 
 const Navbar = ({ header, entries }) => {
-  console.log('entries are', entries);
-  console.log('header is', header);
   const router = useRouter();
   const [getHeader, setHeader] = useState(header);
 
@@ -49,20 +45,10 @@ const Navbar = ({ header, entries }) => {
   }, [header]);
   const headerData = getHeader ? getHeader : undefined;
 
-
   return (
-    <nav className="bg-primarybg montserrat bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 w-full top-0 left-0 z-50 fixed">
-      {/* <span className="h-4 text-primarytext text-center border-b border-gray-400">
-        <Marquee pauseOnHover>
-          {headerData?.notification_bar.show_announcement &&
-            typeof headerData.notification_bar.announcement_text ===
-              "string" && (
-              <div {...headerData.notification_bar.$?.announcement_text}>
-                {parse(headerData.notification_bar.announcement_text)}
-              </div>
-            )}
-        </Marquee>
-      </span> */}
+    <nav
+      className={`bg-transparent montserrat w-full top-0 left-0 z-50 fixed bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <span className="flex items-center space-x-3 rtl:space-x-reverse">
           {headerData && (

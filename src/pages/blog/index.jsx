@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { onEntryChange } from "@/contentstack-sdk";
-import { RenderComponents, BlogList, ArchiveRelative } from "@/components";
+import { BlogList, ArchiveRelative } from "@/components";
 import { getPageRes, getBlogListRes } from "@/helper";
 
 export default function Blog({ page, posts, archivePost, pageUrl }) {

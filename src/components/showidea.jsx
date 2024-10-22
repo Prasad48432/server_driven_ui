@@ -2,54 +2,66 @@ import React from "react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-export default function ShowIdea({ section }) {
+export default function ShowIdea({ layout, section }) {
+  const sectionData = section.hero_idea_sections;
   return (
-    <div className="bg-primarybg">
+    <div
+      style={{
+        backgroundColor: layout.background_color || "#0a0a0a",
+      }}
+      className="w-full h-full"
+    >
       <div
         key="key-contentstection"
-        className={`h-auto lg:h-[85vh] max-w-7xl mx-auto flex flex-col 
-            ${
-              section.image_alignment === "Right"
-                ? "lg:flex-row-reverse"
-                : "lg:flex-row"
-            }
-             items-center justify-center gap-8 px-4 py-8 mt-5`}
+        style={{
+          display: "flex",
+          flexDirection: layout.alignment === "reverse" ? "row" : "row-reverse",
+        }}
+        className={`h-auto lg:h-[85vh] max-w-7xl mx-auto items-center justify-center gap-8 px-4 py-8 mt-5`}
       >
-        <div className="w-full lg:w-1/2 items-center justify-center flex">
+        <div className="w-full  lg:w-1/2 items-center justify-center flex">
           <div className="border border-dashed border-gray-700 lg:border-2 lg:border-gray-700 rounded-2xl p-0 lg:p-1 w-[90vw] h-auto md:w-[450px] md:h-[450px]">
             <img
-              {...section.image.$?.url}
-              src={section.image.url}
-              alt={section.image.filename}
+              src={sectionData.section_image.url}
+              alt={sectionData.section_image.filename}
               key="key-image"
               className="rounded-2xl"
             />
           </div>
         </div>
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left p-4">
-          {section.title_h2 && (
+          {sectionData.title && (
             <h1
-              {...section.$?.title_h2}
-              className="text-2xl lg:text-5xl font-extrabold text-primarytext mb-4"
+              style={{
+                color: layout.title_font_color || "#ededed",
+                fontSize: layout.title_font_size
+                  ? `${layout.title_font_size}rem`
+                  : "3rem",
+              }}
+              className="leading-[1] font-extrabold text-primarytext mb-4"
             >
-              {section.title_h2}
+              {sectionData.title}
             </h1>
           )}
-          {section.description && (
+          {sectionData.description && (
             <p
-              {...section.$?.description}
-              className="text-lg lg:text-xl text-primarytext/70"
+              style={{
+                color: layout.desc_font_color || "rgb(237 237 237 / 0.7)",
+                fontSize: layout.desc_font_size
+                  ? `${layout.desc_font_size}rem`
+                  : "1.25rem",
+              }}
+              className="leading-[1.75rem]"
             >
-              {section.description}
+              {sectionData.description}
             </p>
           )}
-          {section.call_to_action.title && section.call_to_action.href ? (
+          {sectionData.call_to_action ? (
             <Link
-              href={section.call_to_action.href}
+              href={sectionData.call_to_action.call_to_action.href}
               className="border border-primarytext text-primarytext mt-4 lg:mt-6 hover:border-white/50 flex items-center gap-2 hover:gap-3 transition-all duration-300 justify-center font-semibold px-6 py-2 rounded-full text-lg cursor-pointer"
-              {...section.call_to_action.$?.title}
             >
-              {section.call_to_action.title} <FaArrowRight />
+              {sectionData.call_to_action.call_to_action.title} <FaArrowRight />
             </Link>
           ) : (
             ""
