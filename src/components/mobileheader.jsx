@@ -7,45 +7,36 @@ import { motion, useCycle } from "framer-motion";
 import { onEntryChange } from "@/contentstack-sdk";
 import { getHeaderRes } from "@/helper";
 
-const HeaderMobile = ({ header, entries }) => {
-  const [getHeader, setHeader] = useState(header);
+const HeaderMobile = () => {
+  const headerData = {
+    navigation_menu: [
+      {
+        label: "Home",
+        url: {
+          href: "/",
+        },
+      },
+      {
+        label: "About Us",
+        url: {
+          href: "/about-us",
+        },
+      },
+      {
+        label: "Services",
+        url: {
+          href: "/services",
+        },
+      },
+      {
+        label: "Blog",
+        url: {
+          href: "/blog",
+        },
+      },
+    ],
+  };
 
-  function buildNavigation(ent, hd) {
-    let newHeader = { ...hd };
-    if (ent.length !== newHeader.navigation_menu.length) {
-      ent.forEach((entry) => {
-        const hFound = newHeader?.navigation_menu.find(
-          (navLink) => navLink.label === entry.title
-        );
-        if (!hFound) {
-          newHeader.navigation_menu?.push({
-            label: entry.title,
-            $: {},
-          });
-        }
-      });
-    }
-    return newHeader;
-  }
-
-  async function fetchData() {
-    try {
-      if (header && entries) {
-        const headerRes = await getHeaderRes();
-        const newHeader = buildNavigation(entries, headerRes);
-        setHeader(newHeader);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    if (header && entries) {
-      onEntryChange(() => fetchData());
-    }
-  }, [header]);
-  const headerData = getHeader ? getHeader : undefined;
   const pathname = usePathname();
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);

@@ -30,12 +30,12 @@ export const getFooterRes = async () => {
 
 export const getAllEntries = async () => {
   const response = await Stack.getEntry({
-    contentTypeUid: 'page',
+    contentTypeUid: 'home_page',
     referenceFieldPath: undefined,
     jsonRtePath: undefined,
   });
   liveEdit &&
-    response[0].forEach((entry) => addEditableTags(entry, 'page', true));
+    response[0].forEach((entry) => addEditableTags(entry, 'home_page', true));
   return response[0];
 };
 
