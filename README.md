@@ -1,40 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Server Driven UI
 
-## Getting Started
+**An entry for the TechSurf Hackathon by TechStack**
 
-First, run the development server:
+Server Driven UI (SDUI) is a flexible and dynamic architecture that allows the server to control and render the user interface on the client. This approach brings a powerful shift in how UIs are built and updated—without requiring frequent client-side deployments.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧠 Motivation
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+In traditional frontend development, even minor UI changes require client updates. This project was built to:
+- Improve iteration speed
+- Enable real-time UI updates without re-deployments
+- Achieve greater consistency across platforms
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 🔨 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 🧩 **JSON-based UI definitions**
+- ⚡ **Real-time UI updates** from the server
+- 🛠️ **Component rendering engine** on the client side
+- 🧘 **Low-code/No-code ready**
+- 🌐 Built using [NextJS, ContentStack CMS, Tailwind CSS]
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend:** [React / Next.js]
+- **Backend:** [Contenstack CMS]
+- **Others:** [TailwindCSS]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧪 How It Works
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. The **client** fetches UI layout and behavior in JSON format.
+2. The **server** defines components, layouts, and actions.
+3. The **client renders** the UI based on server instructions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```json
+{
+  "type": "button",
+  "props": {
+    "text": "Click Me",
+    "action": "submit_form"
+  }
+}
